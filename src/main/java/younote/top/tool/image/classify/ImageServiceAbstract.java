@@ -14,14 +14,16 @@ import java.io.IOException;
  * @CreateTime: 2020/11/17 20:43:57
  */
 @Slf4j
-public abstract class ImageServiceAbstract implements ImageService {
+public class ImageServiceAbstract {
     /**
      * 打印图片所有 EXIF 信息
+     *
      * @param filePath
+     * @return
      * @throws ImageProcessingException
      * @throws IOException
      */
-    private void getAllExifInfo(String filePath) throws ImageProcessingException, IOException {
+    private final void getAllExifInfo(String filePath) throws ImageProcessingException, IOException {
         Metadata metadata = ImageMetadataReader.readMetadata(new File(filePath));
         metadata.getDirectories().forEach(res -> {
             res.getTags().forEach(tag -> {

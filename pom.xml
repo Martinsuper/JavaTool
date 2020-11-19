@@ -19,6 +19,13 @@
     </properties>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.75</version>
+        </dependency>
+
         <!-- 读取图片exif信息 -->
         <dependency>
             <groupId>com.drewnoakes</groupId>

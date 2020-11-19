@@ -10,7 +10,14 @@ import younote.top.tool.image.pojo.Image;
 public interface ImageService {
     /**
      * 获取图片exif信息
+     * @param filePath
      * @return
      */
-    Image getImageExifInfo();
+    Image getImageExifInfo(String filePath);
+
+    /**
+     * 获取图片所有exif信息
+     * @param filePath
+     */
+    void getAllExifInfo(String filePath);
 }
