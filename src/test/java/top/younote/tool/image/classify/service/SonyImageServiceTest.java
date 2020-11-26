@@ -1,10 +1,8 @@
-package younote.top.tool.image.classify.service;
+package top.younote.tool.image.classify.service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @Description:

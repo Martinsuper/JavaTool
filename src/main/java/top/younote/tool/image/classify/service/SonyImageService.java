@@ -1,4 +1,4 @@
-package younote.top.tool.image.classify.service;
+package top.younote.tool.image.classify.service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -7,8 +7,8 @@ import com.drew.imaging.ImageProcessingException;
 import com.drew.metadata.Metadata;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import younote.top.tool.image.classify.ImageService;
-import younote.top.tool.image.pojo.Image;
+import top.younote.tool.image.classify.ImageService;
+import top.younote.tool.image.pojo.Image;
 
 import java.io.File;
 import java.io.IOException;

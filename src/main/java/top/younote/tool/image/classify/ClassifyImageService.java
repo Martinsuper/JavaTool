@@ -1,4 +1,4 @@
-package younote.top.tool.image.classify;
+package top.younote.tool.image.classify;
 
 
 import lombok.extern.slf4j.Slf4j;

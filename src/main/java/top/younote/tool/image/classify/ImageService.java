@@ -1,6 +1,6 @@
-package younote.top.tool.image.classify;
+package top.younote.tool.image.classify;
 
-import younote.top.tool.image.pojo.Image;
+import top.younote.tool.image.pojo.Image;
 
 /**
  * @Description:

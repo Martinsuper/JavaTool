@@ -1,4 +1,4 @@
-package younote.top.tool.image.pojo;
+package top.younote.tool.image.pojo;
 
 import lombok.Data;
 

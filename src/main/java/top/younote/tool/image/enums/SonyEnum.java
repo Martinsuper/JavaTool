@@ -1,4 +1,4 @@
-package younote.top.tool.image.enums;
+package top.younote.tool.image.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,6 @@ import lombok.Data;
  * @CreateTime: 2020/11/19 20:57:53
  */
 @AllArgsConstructor
-@Data
 public enum SonyEnum {
     SONY_ENUM(1,"Make","brand");
     /**

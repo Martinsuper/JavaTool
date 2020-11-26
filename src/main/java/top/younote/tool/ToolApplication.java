@@ -1,4 +1,4 @@
-package younote.top.tool;
+package top.younote.tool;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
