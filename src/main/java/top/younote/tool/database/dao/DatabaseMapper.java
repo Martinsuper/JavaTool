@@ -8,7 +8,7 @@ import top.younote.tool.database.pojo.DatabaseTableVO;
 import java.util.List;
 
 /**
- * @Description:
+ * @Description: 数据库操作
  * @Author: duanluyao
  * @CreateTime: 2020/11/26 17:10:04
  */
@@ -28,4 +28,11 @@ public interface DatabaseMapper {
      * @return
      */
     List<DatabaseTableVO> getDatabaseTableList(DatabaseTableVO vo);
+
+    /**
+     * 查询数据库表备注信息
+     * @param vo
+     * @return
+     */
+    String getDatabaseTableComment(DatabaseTableVO vo);
 }

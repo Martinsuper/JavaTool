@@ -24,5 +24,5 @@ public interface DatabaseService {
      * @param vo
      * @return
      */
-    List<DataBaseTable> getDatabaseTableInfo(DatabaseTableVO vo);
+    void getDatabaseTableInfo(DatabaseTableVO vo);
 }

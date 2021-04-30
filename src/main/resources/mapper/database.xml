@@ -9,8 +9,9 @@
             `column_name` AS 'fieldName',
             column_comment AS 'fieldDesc',
             UPPER(column_type) AS 'fieldType',
+            column_default AS 'fieldDefaultValue',
             IF(column_key = 'PRI', 'YES', 'NO') AS 'isPrimaryKey',
-            IF(IS_NULLABLE = 'NO', 'YES', 'N1O') AS 'isNotNull'
+            IF(IS_NULLABLE = 'NO', 'YES', 'N1O') AS 'isNot Null'
         FROM
             information_schema.COLUMNS
         WHERE
@@ -24,5 +25,13 @@
             information_schema.tables
         WHERE
             table_schema = #{databaseName}
+    </select>
+    <select id="getDatabaseTableComment" resultType="java.lang.String">
+        SELECT
+            table_comment
+        FROM
+            information_schema.TABLES
+        WHERE
+            `table_name` = #{tableName}
     </select>
 </mapper>

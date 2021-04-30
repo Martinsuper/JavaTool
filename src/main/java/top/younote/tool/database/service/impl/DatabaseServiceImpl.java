@@ -1,5 +1,9 @@
 package top.younote.tool.database.service.impl;
 
+import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.ExcelWriter;
+import com.alibaba.excel.write.metadata.WriteSheet;
+import com.alibaba.excel.write.metadata.WriteTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.younote.tool.database.dao.DatabaseMapper;
@@ -7,7 +11,9 @@ import top.younote.tool.database.pojo.DataBaseTable;
 import top.younote.tool.database.pojo.DatabaseTableVO;
 import top.younote.tool.database.service.DatabaseService;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 /**
@@ -41,12 +47,28 @@ public class DatabaseServiceImpl implements DatabaseService {
      * @return
      */
     @Override
-    public List<DataBaseTable> getDatabaseTableInfo(DatabaseTableVO vo) {
-        List<DataBaseTable> dataBaseTableList = databaseMapper.getDatabaseList(vo);
-        writeToCsv(dataBaseTableList);
-        return dataBaseTableList;
-    }
-    private void writeToCsv(List<DataBaseTable> dataBaseTables){
-
+    public void getDatabaseTableInfo(DatabaseTableVO vo) {
+        String fileName = "数据库字段信息.xlsx";
+        ExcelWriter excelWriter = null;
+        try {
+            excelWriter = EasyExcel.write(fileName, DataBaseTable.class).build();
+            // 把sheet设置为不需要头 不然会输出sheet的头 这样看起来第一个table 就有2个头了
+            WriteSheet writeSheet = EasyExcel.writerSheet(vo.getDatabaseName()).needHead(Boolean.FALSE).build();
+            List<String> dataBaseTableList = getDatabaseTableList(vo.getDatabaseName());
+            AtomicInteger cnt = new AtomicInteger();
+            ExcelWriter finalExcelWriter = excelWriter;
+            dataBaseTableList.forEach(res -> {
+                vo.setTableName(res);
+                List<DataBaseTable> curDatabaseTableList = databaseMapper.getDatabaseList(vo);
+                WriteTable writeTable = EasyExcel.writerTable(cnt.getAndIncrement()).needHead(Boolean.TRUE).build();
+                finalExcelWriter.write(curDatabaseTableList,writeSheet,writeTable);
+                EasyExcel.write(fileName).sheet(fileName).doWrite(Collections.singletonList(res));
+            });
+        } finally {
+            // 千万别忘记finish 会帮忙关闭流
+            if (excelWriter != null) {
+                excelWriter.finish();
+            }
+        }
     }
 }
